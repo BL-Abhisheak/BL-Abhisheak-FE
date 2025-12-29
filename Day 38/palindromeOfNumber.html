@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Functions</title>
+</head>
+<body>
+    <p>WELCOME TO PALINDROME PROGRAM</p>
+    <input type="text" placeholder="Enter  a number" id="ipbox"></input> 
+    <button type="submit" onclick="palindromeCheckNumber()">Check</button>
+    <p id = "result"></p>
+</body>
+
+<script>
+
+    var ip = document.getElementById("ipbox");
+    var btn = document.getElementById("submit");
+    var res = document.getElementById("result");
+
+    function palindromeCheckNumber(){
+        var num = ip.value;
+        var temp = num;
+        var rev = 0;
+
+        while(num>0){
+            var last = num%10;
+            num = Math.floor(num / 10);
+            rev = (rev*10)+ last;
+        }
+
+        if(rev==temp){
+            console.log("It is a palindrome number")
+        } else{
+            console.log("It is not a palindrome number")
+        }
+    }
+
+</script>
+</html>

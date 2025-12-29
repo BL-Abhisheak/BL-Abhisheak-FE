@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PRIME PALINDROME CHECK</title>
+</head>
+<body>
+
+<p>WELCOME TO PRIME PALINDROME CHECK PROGRAM</p>
+
+<input type="text" placeholder="Enter a number" id="ipbox">
+<button onclick="palindromePrime()">Check</button>
+
+<p id="result"></p>
+
+<script>
+    var ip = document.getElementById("ipbox");
+    var res = document.getElementById("result");
+
+    function isPrime(num) {
+        if (num <= 1) return false;
+
+        for (let i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i === 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    function getPalindrome(num) {
+        let rev = 0;
+
+        while (num > 0) {
+            let last = num % 10;
+            rev = rev * 10 + last;
+            num = Math.floor(num / 10);
+        }
+        return rev;
+    }
+
+    function palindromePrime() {
+        let num = Number(ip.value);
+
+        if (isNaN(num)) {
+            res.innerText = "Please enter a valid number";
+            return;
+        }
+
+        if (!isPrime(num)) {
+            res.innerText = num + " is NOT a prime number";
+            return;
+        }
+
+        let palindrome = getPalindrome(num);
+
+        if (isPrime(palindrome)) {
+            res.innerText =
+                num + " is prime and its palindrome " +
+                palindrome + " is also prime";
+        } else {
+            res.innerText =
+                num + " is prime but its palindrome " +
+                palindrome + " is NOT prime";
+        }
+    }
+</script>
+
+</body>
+</html>
