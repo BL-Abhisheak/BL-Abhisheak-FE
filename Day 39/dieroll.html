@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DICE ROLL</title>
+</head>
+<body>
+    <h1>Open console to see output</h1>
+</body>
+
+<script>
+    // Dictionary to store dice counts
+    let diceCount = {
+        1: 0,
+        2: 0,
+        3: 0,
+        4: 0,
+        5: 0,
+        6: 0
+    };
+
+    let reachedTen = false;
+
+    // Roll dice until any number reaches 10
+    while (!reachedTen) {
+        let die = Math.floor(Math.random() * 6) + 1;
+        diceCount[die]++;
+        console.log("Rolled:", die);
+
+        if (diceCount[die] === 10) {
+            reachedTen = true;
+        }
+    }
+
+    console.log("Final Dice Count:", diceCount);
+
+    // Find max and min occurring numbers
+    let maxCount = -Infinity;
+    let minCount = Infinity;
+    let maxNumber;
+    let minNumber;
+
+    for (let number in diceCount) {
+        if (diceCount[number] > maxCount) {
+            maxCount = diceCount[number];
+            maxNumber = number;
+        }
+
+        if (diceCount[number] < minCount) {
+            minCount = diceCount[number];
+            minNumber = number;
+        }
+    }
+
+    console.log(`Maximum occurred number: ${maxNumber} (${maxCount} times)`);
+    console.log(`Minimum occurred number: ${minNumber} (${minCount} times)`);
+</script>
+</html>

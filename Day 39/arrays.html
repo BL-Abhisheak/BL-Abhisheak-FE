@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARRAYS PROCESSES</title>
+</head>
+<body>
+    <h1>ARRAYS SECTION</h1>
+    <h3>OPEN CONSOLE FOR MORE.....</h1>
+</body>
+<script>
+    var random;
+    const arr = [];
+
+
+    for(var i = 1;i<=10;i++){
+        random = Math.floor(Math.random() * 900) + 100;
+        console.log(random);
+        arr.push(random);
+    }
+   console.log(arr);
+
+   
+
+
+   const sortedarr = arr.sort((a, b) => a - b);
+
+    for(var i =0;i<sortedarr.length;i++){
+     console.log(sortedarr[i]);
+    }
+
+    
+   let secSmall = sortedarr[1];
+   let secBig = sortedarr[sortedarr.length-2];
+   console.log("The second smallest element is : " + secSmall);
+   console.log("The second biggest element is : " + secBig)
+
+   
+    
+</script>
+</html>
