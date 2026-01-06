@@ -161,15 +161,11 @@ catch(ex){
     console.log({name : ex.name , message : ex.message})
 }
 
-
-
-
 addressBook.editContact("Ramm", {
     address: "Brigade Road",
     city: "Mysore",
     phone: "9123456789"
 });
-
 addressBook.displayContacts();  
 
 
