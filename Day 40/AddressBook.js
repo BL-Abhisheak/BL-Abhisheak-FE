@@ -62,9 +62,49 @@ class Contact{
         const pattern = /^[a-zA-Z0-9]+([._+-][a-zA-Z0-9]+)*@[a-zA-Z0-9]+\.[a-zA-Z]{2,}$/;
         if (!pattern.test(email)) throw new Error("Invalid Email");
     }
-    
+
 
 }
+
+
+class AddressBook{
+    constructor(){
+        this.contacts = [];
+    }
+
+    addContact(contact){
+    if(!(contact instanceof Contact)){
+        throw new Error ("Only contacts objects are allowed!!");
+    }
+    else{
+        this.contacts.push(contact)
+    }
+}
+}
+
+
+
+try{
+const addressBook  = new AddressBook();
+
+const contact1 = new Contact(
+        "Ramm",
+        "Kumar",
+        "MG Road",
+        "Bangalore",
+        "Karnataka",
+        "560001",
+        "9876543210",
+        "ravi.kumar@gmail.com"
+    );
+
+addressBook.addContact(contact1);
+addressBook.displayContacts();
+}
+catch(ex){
+    console.log({name : ex.name , message : ex.message})
+}
+
 
 
 
