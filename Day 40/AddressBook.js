@@ -63,8 +63,8 @@ class Contact{
         if (!pattern.test(email)) throw new Error("Invalid Email");
     }
 
-
 }
+
 
 
 class AddressBook{
@@ -80,9 +80,65 @@ class AddressBook{
         this.contacts.push(contact)
     }
 }
+
+     displayContacts() {
+        console.log(this.contacts);
+    }
+
+
+    
+    editContact(firstName, updatedData) {
+
+    const contact = this.contacts.find(
+        c => c.firstName === firstName
+    );
+
+    if (!contact) {
+        throw new Error("Contact not found with first name: " + firstName);
+    }
+
+    if (updatedData.firstName) {
+        contact.validateFirstName(updatedData.firstName);
+        contact.firstName = updatedData.firstName;
+    }
+
+    if (updatedData.lastName) {
+        contact.validateLastName(updatedData.lastName);
+        contact.lastName = updatedData.lastName;
+    }
+
+    if (updatedData.address) {
+        contact.validateAddress(updatedData.address);
+        contact.address = updatedData.address;
+    }
+
+    if (updatedData.city) {
+        contact.validateCity(updatedData.city);
+        contact.city = updatedData.city;
+    }
+
+    if (updatedData.state) {
+        contact.validateState(updatedData.state);
+        contact.state = updatedData.state;
+    }
+
+    if (updatedData.zip) {
+        contact.validateZip(updatedData.zip);
+        contact.zip = updatedData.zip;
+    }
+
+    if (updatedData.phone) {
+        contact.validatePhone(updatedData.phone);
+        contact.phone = updatedData.phone;
+    }
+
+    if (updatedData.email) {
+        contact.validateEmail(updatedData.email);
+        contact.email = updatedData.email;
+    }
 }
 
-
+}
 
 try{
 const addressBook  = new AddressBook();
@@ -104,6 +160,17 @@ addressBook.displayContacts();
 catch(ex){
     console.log({name : ex.name , message : ex.message})
 }
+
+
+
+
+addressBook.editContact("Ramm", {
+    address: "Brigade Road",
+    city: "Mysore",
+    phone: "9123456789"
+});
+
+addressBook.displayContacts();
 
 
 
