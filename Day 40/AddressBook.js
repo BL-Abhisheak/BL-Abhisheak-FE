@@ -83,7 +83,6 @@ class AddressBook {
             throw new Error("Only Contact objects are allowed");
         }
 
-        // Prevent duplicate contact by email
         if (this.contacts.some(c => c.email === contact.email)) {
             throw new Error("Contact with this email already exists");
         }
@@ -148,15 +147,26 @@ class AddressBook {
     }
 }
 
-/* =================== USAGE =================== */
 
 try {
     const addressBook = new AddressBook();
 
     const contact1 = new Contact(
-        "Ramm",
+        "Abhisheak",
+        "Bhaskaran",
+        "Bommanahalli",
+        "Bangalore",
+        "Karnataka",
+        "560001",
+        "9876543210",
+        "abhi.bhaskaran@gmail.com"
+    );
+
+
+    const contact2 = new Contact(
+        "Ravi",
         "Kumar",
-        "MG Road",
+        "Bommanahalli",
         "Bangalore",
         "Karnataka",
         "560001",
@@ -167,7 +177,7 @@ try {
     addressBook.addContact(contact1);
     addressBook.displayContacts();
 
-    addressBook.editContactByFirstName("Ramm", {
+    addressBook.editContactByFirstName("Ravi", {
         address: "Brigade Road",
         city: "Mysore",
         phone: "9123456789"
@@ -175,7 +185,7 @@ try {
 
     addressBook.displayContacts();
 
-    addressBook.deleteContactByFirstName("Ramm");
+    addressBook.deleteContactByFirstName("Ravi");
     addressBook.displayContacts();
 
 } catch (ex) {
